@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Montserrat:wght@500;700&display=swap');
+
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+/* primary colors */
+$Cream           : hsl(30, 38%, 92%);
+$Dark-cyan       : hsl(158, 36%, 37%);
+$Darker-dark-cyan: hsl(157, 36%, 23%);
+
+/* neutral colors */
+$White            : hsl(0, 0%, 100%);
+$Very-dark-blue   : hsl(212, 21%, 14%);
+$Dark-grayish-blue: hsl(228, 12%, 48%);
+
+/* font-families */
+$Fraunces: 'Fraunces',
+serif;
+$Montserrat: 'Montserrat',
+sans-serif;
+
+@mixin flex {
+    display        : flex;
+    align-items    : center;
+    flex-direction : column;
+    justify-content: center;
+}
+
+body {
+    @include flex();
+    padding         : 1em;
+    font-size       : 14px;
+    min-height      : 100vh;
+    font-family     : $Montserrat;
+    background-color: $Cream;
+
+    .card {
+        @include flex();
+        overflow        : hidden;
+        border-radius   : 12px;
+        background-color: $White;
+
+        .card__info {
+            @include flex();
+            gap        : 1em;
+            padding    : 1.5em;
+            align-items: start;
+
+            h3,
+            p {
+                color: $Dark-grayish-blue;
+            }
+
+            h3 {
+                font-size     : .8rem;
+                font-weight   : 500;
+                letter-spacing: .4rem;
+            }
+
+            h1 {
+                color      : $Very-dark-blue;
+                font-size  : 2rem;
+                font-family: $Fraunces;
+            }
+
+            p {
+                width      : 92%;
+                line-height: 1.4rem;
+            }
+
+            .info__price {
+                @include flex();
+                flex-direction: row;
+                gap           : 1.5rem;
+
+                .price {
+                    color      : $Dark-cyan;
+                    font-size  : 2rem;
+                    font-family: $Fraunces;
+                }
+
+                span {
+                    font-size: .8rem;
+                    color    : $Dark-grayish-blue;
+                }
+            }
+
+            .info__btn {
+                @include flex();
+                gap             : .8em;
+                width           : 100%;
+                color           : $White;
+                cursor          : pointer;
+                border          : none;
+                padding         : 1rem;
+                font-family     : $Montserrat;
+                font-weight     : 600;
+                border-radius   : 10px;
+                flex-direction  : row;
+                background-color: $Dark-cyan;
+
+                &:active {
+                    background-color: $Darker-dark-cyan;
+                }
+            }
+        }
+    }
+}
+
+/* desktop media query */
+@media screen and (min-width: 768px) {
+    body {
+        .card {
+            flex-direction: row;
+
+            .card__img {
+                display: none;
+            }
+
+            .card__img-desk {
+                width            : 370px;
+                height           : 550px;
+                background-size  : contain;
+                background-image : url('../images/image-product-desktop.jpg');
+                background-repeat: no-repeat;
+            }
+
+            .card__info {
+                gap    : 2em;
+                width  : 400px;
+                padding: 0 3em;
+
+                h3 {
+                    font-size: 1rem;
+                }
+
+                h1 {
+                    font-size  : 2.6rem;
+                    line-height: 1em;
+                }
+
+                p {
+                    width      : 82%;
+                    font-size  : 1rem;
+                    line-height: 1.7rem;
+                }
+
+                .info__price {
+                    span {
+                        font-size: 1rem;
+                    }
+
+                    .price {
+                        font-size: 3em;
+                    }
+                }
+
+                .info__btn {
+                    padding: 1.4em 0;
+                }
+            }
+        }
+    }
+}
